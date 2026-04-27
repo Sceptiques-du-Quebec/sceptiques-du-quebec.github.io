@@ -1,15 +1,9 @@
 @use "config" as *;
 
 
-@property --color-1 {
-  syntax: '<color>';
-  initial-value: #ff2400;
-  inherits: false;
-}
-
-@property --color-2 {
-  syntax: '<color>';
-  initial-value: #2b1de8;
+@property --hue {
+  syntax: '<number>';
+  initial-value: 0;
   inherits: false;
 }
 
@@ -53,25 +47,16 @@ body {
     min-height: 100dvh;
     max-width: 100%;
 
-	background-color: #666666;
-	background-blend-mode: screen;
-	background-image: linear-gradient(124deg, var(--color-1), var(--color-2));
-    animation: color-morph 10s linear infinite;
-
-
 	&::before {
 		content: "";
 		position: fixed;
 		inset: 0;
-		// opacity: 0.6;
-	background-color: #666666;
-	background-blend-mode: screen;
-	background-image: linear-gradient(124deg, var(--color-1), var(--color-2));
-    animation: color-morph 10s linear infinite;
-		// background-color: red;
+		background-color: #757575;
+		background-blend-mode: screen;
+		background-image: linear-gradient(135deg, hsl(var(--hue), 80%, 50%), hsl(var(--hue), 85%, 40%));
+		animation: smooth-hue 30s linear infinite;
 		z-index: -1;
 	}
-
 
 	&::after {
 		content: "";
@@ -82,20 +67,15 @@ body {
 		background-image: var(--rainbow), var(--unicorn), var(--rainbow), var(--unicorn), var(--rainbow), var(--unicorn), var(--rainbow), var(--unicorn), var(--rainbow);
 		background-size: 2rem 2rem;
 		animation: drift9 var(--drift-time) linear var(--drift-time-delay) infinite;
-		// background-color: red;
 		z-index: -1;
 	}
-
-
 
 }
 
 
-@keyframes color-morph {
-    0% { --color-1: #ff2400; --color-2: #2b1de8; }
-    33% { --color-1: #e8b71d; --color-2: #dd00f3; }
-    66% { --color-1: #1de840; --color-2: #ff2400; }
-    100% { --color-1: #ff2400; --color-2: #2b1de8; }
+@keyframes smooth-hue {
+    0% { --hue: 0; }
+    100% { --hue: 360; }
 }
 
 
