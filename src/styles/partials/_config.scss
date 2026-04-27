@@ -3,33 +3,34 @@
 @use "sass:color";
 
 
-$color-fg:     #2c231a;
-$color-bg:     #fef3d5;
-$color-blue:   #1a0088;
-$color-green:  #b8ce52;
-$color-red:    #ff5e32;
-$color-alpha:  #ffffff4d;
-$color-shadow: #0000001a;
+// $color-fg:     #2c231a;
+// $color-bg:     #fef3d5;
+// $color-blue:   #1a0088;
+// $color-green:  #b8ce52;
+// $color-red:    #ff5e32;
 
-$font-family:  Logic;
-$font-logo:    Dazzle;
-$font-spacing: -0.07em;
+$color-alpha:  #ffffff4d;
+$color-shadow: #0000006d;
+
+$font-text:     Recursive;
+$font-title:    Unbounded;
+$font-spacing:  0em;
 
 $font-base:   28;
 $font-break:  1024;
 $font-resp:   calc($font-base * 100 / $font-break);
 
 $drift-time:  30s;
-$scroll-top:  11rem;
+// $scroll-top:  11rem;
 
-$particule-size-1: 2.5em;
-$particule-size-2: 1.75em;
+// $particule-size-1: 2.5em;
+// $particule-size-2: 1.75em;
 
-$color-blue-hex:  hexbin($color-blue);
-$color-green-hex: hexbin($color-green);
-$color-red-hex:   hexbin($color-red);
+// $color-blue-hex:  hexbin($color-blue);
+// $color-green-hex: hexbin($color-green);
+// $color-red-hex:   hexbin($color-red);
 
-$map-ground:  hex6(color.scale(wash($color-bg, $color-green, 25%), $lightness: 0%));
-$map-water:   hex6(color.scale(wash($color-bg, $color-blue, 45%), $lightness: -10%));
-$map-road:    hex6(color.scale(wash($color-bg, $color-fg, 7%), $lightness: -2%, $saturation: -10%));
-$map-highway: hex6(color.scale(wash($color-bg, $color-red, 20%), $lightness: 10%));
+// $map-ground:  hex6(color.scale(wash($color-bg, $color-green, 25%), $lightness: 0%));
+// $map-water:   hex6(color.scale(wash($color-bg, $color-blue, 45%), $lightness: -10%));
+// $map-road:    hex6(color.scale(wash($color-bg, $color-fg, 7%), $lightness: -2%, $saturation: -10%));
+// $map-highway: hex6(color.scale(wash($color-bg, $color-red, 20%), $lightness: 10%));

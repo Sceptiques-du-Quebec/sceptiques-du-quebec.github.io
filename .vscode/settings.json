@@ -28,8 +28,8 @@
             "color": "cyan"
         },
         {
-            "path": "dist",
-            "color": "red"
+            "path": "scripts",
+            "color": "magenta"
         }
     ]
 }
