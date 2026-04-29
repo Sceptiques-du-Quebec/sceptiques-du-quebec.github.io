@@ -39,7 +39,7 @@ html {
 
 body {
     position: relative;
-    // color: var(--color-fg);
+    color: var(--color-fg);
     // background-color: var(--color-bg);
     overflow-x: hidden;
     display: flex;
@@ -243,6 +243,24 @@ footer {
         image-rendering: auto;
         display: block;
         margin: auto;
+    }
+
+
+    &::before {
+        content: "CHARGEMENT...";
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-title);
+        font-weight: 900;
+        font-size: 1.2em;
+        color: var(--color-fg);
+    }
+
+    &.loaded::before {
+        display: none;
     }
 
 

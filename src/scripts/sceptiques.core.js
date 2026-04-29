@@ -1,4 +1,5 @@
 import './libraries/helpers';
+import './libraries/cssdoc';
 
 
 
@@ -11,9 +12,9 @@ import './libraries/helpers';
 
 
 	init: async function() {
-		console.log("patate");
+		await documentReady();
 		await loadScript(new URL('https://sceptiques-du-quebec.github.io/brick-breaqueer/scripts/brickbreaqueer.core.min.js', window.location).href);
-
+		document.querySelector('#game-container').classList.add('loaded');
 		BrickBreaqueer({
 			parent: "game-container",
 			width: 800,
