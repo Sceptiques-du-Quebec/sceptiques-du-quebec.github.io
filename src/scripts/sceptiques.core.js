@@ -4,7 +4,6 @@ import ModalScore from './libraries/modalscore';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 
-
 const GAME_URL = 'https://sceptiques-du-quebec.github.io/brick-breaqueer/scripts/brickbreaqueer.core.min.js';
 const API_URL  = 'https://script.google.com/macros/s/AKfycbwsBRwf-wCg1PL6P8m0llrXB4OKlEqdmAE0wZdtruBBoFZB_UWnr-Z-9VaGP1SCEtlG/exec';
 
@@ -16,11 +15,19 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwsBRwf-wCg1PL6P8m0llr
 
 
 	init: async function() {
+		await this.shuffleBackground();
 		await documentReady();
 		this.modalscore = new ModalScore();
 		this.loadFingerprint();
 		this.loadGame();
 		this.loadLeaderboard();
+	},
+
+
+	shuffleBackground: async function() {
+		const driftTime = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--drift-time').replace(/s$/gi, ''));
+		const delay = 0 - (Math.floor(Math.random() * (driftTime + 1)));
+		document.documentElement.style.setProperty('--drift-time-delay', `${delay}s`);
 	},
 
 
@@ -47,9 +54,9 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwsBRwf-wCg1PL6P8m0llr
 
 	loadLeaderboard: async function(data) {
 		data = data || await this.getLeaderboard();
-		
+
 		const container = document.querySelector('.leaderboard > div > div');
-		
+
 		const table = create('table');
 		const header = table.create('tr');
 		header.create('td', null, 'utilisateur');

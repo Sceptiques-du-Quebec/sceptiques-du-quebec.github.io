@@ -2,8 +2,10 @@ import Modal from "./modal";
 
 
 export default class ModalScore extends Modal {
+
 	#clb = null;
 	#container = null;
+
 
 	constructor() {
 		super({
@@ -71,12 +73,10 @@ export default class ModalScore extends Modal {
 		}
 	}
 
+
 	cancel() {
 		this.hide();
 		this.#clb({ savescore: false });
 	}
 
-
-
-	
 }
