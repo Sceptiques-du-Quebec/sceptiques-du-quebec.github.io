@@ -46,6 +46,7 @@ body {
     flex-direction: column;
     min-height: 100dvh;
     max-width: 100%;
+    padding-top: 1rem;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -166,6 +167,39 @@ section {
 			// color: var(--color-blue);
 		}
 
+        li {
+            margin-left: 2em;
+            margin-top: 0.7em;
+        }
+
+        a {
+            color: var(--color-fg);
+            font-weight: 600;
+
+            &[href*="mailto:"]::after {
+                content: '';
+                display: inline-block;
+                width: 1em;
+                aspect-ratio: 1/1;
+                background-image: var(--mail);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                margin-left: 0.1em;
+            }
+
+            &[target="_blank"]::after {
+                content: '';
+                display: inline-block;
+                width: 1em;
+                aspect-ratio: 1/1;
+                background-image: var(--link);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                margin-left: 0.1em;
+            }
+        }
 	}
 
 
