@@ -20,6 +20,7 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwsBRwf-wCg1PL6P8m0llr
 		this.modalscore = new ModalScore();
 		this.loadFingerprint();
 		this.loadGame();
+		this.loadLeaderboard();
 	},
 
 
@@ -41,6 +42,29 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwsBRwf-wCg1PL6P8m0llr
 	loadFingerprint: async function() {
 		const fp = await FingerprintJS.load();
 		this.fingerprint = (await fp.get()).visitorId;
+	},
+
+
+	loadLeaderboard: async function(data) {
+		data = data || await this.getLeaderboard();
+		
+		const container = document.querySelector('.leaderboard > div > div');
+		
+		const table = create('table');
+		const header = table.create('tr');
+		header.create('td', null, 'utilisateur');
+		header.create('td', null, 'niveau');
+		header.create('td', null, 'score');
+
+		data.topGrouped.forEach(entry => {
+			const row = table.create('tr');
+			row.create('td', null, entry[2]);
+			row.create('td', null, entry[3]);
+			row.create('td', null, entry[4]);
+		});
+
+		container.classList.add('loaded');
+		container.replaceChildren(table);
 	},
 
 
@@ -66,15 +90,8 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwsBRwf-wCg1PL6P8m0llr
 
 
 	logScore: async function(stats) {
-
 		const creds = await this.getCredentials();
 		if(creds.savescore) {
-
-
-			console.log(stats);
-			console.log(creds);
-			console.log(this.fingerprint);
-
 			this.saveScore({
 				fingerprint: this.fingerprint,
 				username: creds.username,
@@ -82,23 +99,7 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwsBRwf-wCg1PL6P8m0llr
 				score: stats.score,
 				hash: md5(`${this.fingerprint}:${creds.username}:${stats.levelReached}:${stats.score}`)
 			});
-
-
 		}
-
-
-		// fetch(API_URL, {
-		//   method: 'POST',
-		//   body: JSON.stringify({
-		//     fingerprint: 'user-unique-id',
-		//     username: 'Joueur1',
-		//     level: 5,
-		//     score: 1250,
-		//     hash: 'votre-cle-de-securite'
-		//   })
-		// })
-		// .then(res => res.json())
-		// .then(console.log);
 	},
 
 
@@ -106,12 +107,29 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwsBRwf-wCg1PL6P8m0llr
 		try {
 			const results = await fetch(API_URL, { method: 'POST', body: JSON.stringify(entry) });
 			const data = await results.json();
-			console.log(data);
+			if(data.status == 'success') {
+				this.loadLeaderboard(data.leaderboard);
+			} else {
+				console.error(data.message);
+				return false;
+			}
 		} catch (e) {
 			console.error(e);
+			return false;
+		}
+	},
+
+
+	getLeaderboard: async function() {
+		try {
+			const results = await fetch(API_URL);
+			const data = await results.json();
+			return data;
+		} catch (e) {
+			console.error(e);
+			return false;
 		}
 	}
-
 
 
 }).init();
