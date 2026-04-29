@@ -67,7 +67,7 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwsBRwf-wCg1PL6P8m0llr
 			const row = table.create('tr');
 			row.create('td', null, entry[2]);
 			row.create('td', null, entry[3]);
-			row.create('td', null, entry[4]);
+			row.create('td', null, entry[4].toLocaleString());
 		});
 
 		container.classList.add('loaded');
