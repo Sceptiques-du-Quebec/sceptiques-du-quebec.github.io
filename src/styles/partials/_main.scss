@@ -2,9 +2,9 @@
 
 
 @property --hue {
-  syntax: '<number>';
-  initial-value: 0;
-  inherits: false;
+	syntax: '<number>';
+	initial-value: 0;
+	inherits: false;
 }
 
 
@@ -46,6 +46,9 @@ body {
     flex-direction: column;
     min-height: 100dvh;
     max-width: 100%;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
 	&::before {
 		content: "";
@@ -102,8 +105,6 @@ main {
     hyphens: auto;
 	padding-top: 1rem;
 }
-
-
 
 
 section {
@@ -169,26 +170,34 @@ section {
 
 
 	&.logo > div {
-		border-radius: 0;
 		background-color: transparent;
-		background-image: var(--logo);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: contain;
-		height: 8rem;
-		box-shadow: none;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
 
-		filter: 
-			drop-shadow(0 0 0.05rem red)
-			drop-shadow(0 0 0.1rem orange)
-			drop-shadow(0 0 0.15rem yellow)
-			drop-shadow(0 0 0.2rem lime)
-			drop-shadow(0 0 0.25rem cyan)
-			drop-shadow(0 0 0.3rem blue)
-			drop-shadow(0 0 0.35rem violet);
+        & > a > h1 {
 
-		// filter: drop-shadow(0 0 0.75rem var(--color-shadow));
+            background-image: var(--logo);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            height: 8rem;
+            
+
+            filter: 
+                drop-shadow(0 0 0.05rem red)
+                drop-shadow(0 0 0.1rem orange)
+                drop-shadow(0 0 0.15rem yellow)
+                drop-shadow(0 0 0.2rem lime)
+                drop-shadow(0 0 0.25rem cyan)
+                drop-shadow(0 0 0.3rem blue)
+                drop-shadow(0 0 0.35rem violet);
+        }
 	}
+
+    &.game > div {
+        padding: 0.7rem;
+    }
 }
 
 
@@ -201,10 +210,6 @@ footer {
     height: 5rem;
     margin-bottom: 3rem;
     user-select: none;
-    // filter: grayscale(100);
-    // color: var(--color-green);
-	// opacity: 0.7;
-    // z-index: -1;
 
     &::before {
         content: '';
@@ -216,4 +221,29 @@ footer {
         background-repeat: no-repeat;
         margin-right: 0.5em;
     }
+}
+
+
+
+
+
+#game-container {
+    position: relative;
+
+	aspect-ratio: 4 / 3;
+	// width: 100%;
+	// max-width: 887px;
+	// border-radius: 2rem;
+    height: 100%;
+    max-height: 75vh;
+    // background-color: red;
+    margin: auto;
+
+    canvas {
+        image-rendering: auto;
+        display: block;
+        margin: auto;
+    }
+
+
 }
