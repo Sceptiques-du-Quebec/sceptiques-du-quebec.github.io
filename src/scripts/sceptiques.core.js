@@ -1,19 +1,30 @@
 import './libraries/helpers';
-import './libraries/cssdoc';
+import CSSDoc from './libraries/cssdoc';
+import ModalScore from './libraries/modalscore';
+import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 
 
-
-
-
+const GAME_URL = 'https://sceptiques-du-quebec.github.io/brick-breaqueer/scripts/brickbreaqueer.core.min.js';
+const API_URL  = 'https://script.google.com/macros/s/AKfycbwsBRwf-wCg1PL6P8m0llrXB4OKlEqdmAE0wZdtruBBoFZB_UWnr-Z-9VaGP1SCEtlG/exec';
 
 
 ({
 
+	modalscore: null,
+	fingerprint: null,
+
 
 	init: async function() {
 		await documentReady();
-		await loadScript(new URL('https://sceptiques-du-quebec.github.io/brick-breaqueer/scripts/brickbreaqueer.core.min.js', window.location).href);
+		this.modalscore = new ModalScore();
+		this.loadFingerprint();
+		this.loadGame();
+	},
+
+
+	loadGame: async function() {
+		await loadScript(GAME_URL);
 		document.querySelector('#game-container').classList.add('loaded');
 		BrickBreaqueer({
 			parent: "game-container",
@@ -21,19 +32,86 @@ import './libraries/cssdoc';
 			height: 600,
 			fontFamily: "Unbounded",
 			fontWeight: 500,
-			color: '#161616',
-			onGameOver: async (stats) => {
-				console.log("Stats de fin de partie :", stats);
-				return new Promise((resolve) => {
-					setTimeout(() => {
-						console.log("Modal fermé");
-						resolve();
-					}, 2000);
+			color: (new CSSDoc)('--color-fg'),
+			onGameOver: async stats => await this.logScore(stats)
+		});
+	},
+
+
+	loadFingerprint: async function() {
+		const fp = await FingerprintJS.load();
+		this.fingerprint = (await fp.get()).visitorId;
+	},
+
+
+	getCredentials: async function() {
+		return new Promise(res => {
+			const savescore = sessionStorage.getItem('savescore');
+			const username  = sessionStorage.getItem('username');
+			if(savescore == 'no') res({ savescore: false });
+			else if(savescore == 'yes' && username) res({ savescore: true, username: username });
+			else {
+				this.modalscore.show(results => {
+					if(results.savescore) {
+						sessionStorage.setItem('savescore', 'yes');
+						sessionStorage.setItem('username', results.username);
+					} else {
+						sessionStorage.setItem('savescore', 'no');
+					}
+					res(results);
 				});
 			}
 		});
+	},
 
 
+	logScore: async function(stats) {
+
+		const creds = await this.getCredentials();
+		if(creds.savescore) {
+
+
+			console.log(stats);
+			console.log(creds);
+			console.log(this.fingerprint);
+
+			this.saveScore({
+				fingerprint: this.fingerprint,
+				username: creds.username,
+				level: stats.levelReached,
+				score: stats.score,
+				hash: md5(`${this.fingerprint}:${creds.username}:${stats.levelReached}:${stats.score}`)
+			});
+
+
+		}
+
+
+		// fetch(API_URL, {
+		//   method: 'POST',
+		//   body: JSON.stringify({
+		//     fingerprint: 'user-unique-id',
+		//     username: 'Joueur1',
+		//     level: 5,
+		//     score: 1250,
+		//     hash: 'votre-cle-de-securite'
+		//   })
+		// })
+		// .then(res => res.json())
+		// .then(console.log);
+	},
+
+
+	saveScore: async function (entry) {
+		try {
+			const results = await fetch(API_URL, { method: 'POST', body: JSON.stringify(entry) });
+			const data = await results.json();
+			console.log(data);
+		} catch (e) {
+			console.error(e);
+		}
 	}
+
+
 
 }).init();

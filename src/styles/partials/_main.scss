@@ -141,6 +141,7 @@ section {
         position: relative;
         width: 88%;
         border-radius: 2rem;
+        
         padding: 2rem;
 		background-color: var(--color-alpha);
 		box-shadow:
@@ -231,6 +232,7 @@ section {
 
     &.game > div {
         padding: 0.7rem;
+        overflow: hidden;
     }
 }
 

@@ -1,0 +1,67 @@
+.modalscore__container {
+
+
+	&__title {
+		font-family: var(--font-title);
+		font-weight: 700;
+	}
+
+	&__form {
+		margin-top: 1rem;
+		input {
+			font-family: var(--font-title);
+			font-size: 0.8rem;
+			text-transform: uppercase;
+			text-align: center;
+			font-weight: 600;
+			padding: 0.2rem;
+			
+			&::placeholder {
+				opacity: 0.3;
+				color: var(--color-fg);
+			
+			}
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 2rem;
+		margin-top: 1rem;
+
+		& > div {
+			width: 7rem;
+			height: 3rem;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			transition: filter 50ms;
+			cursor: pointer;
+
+			&:hover {
+				filter: drop-shadow(0 0 0.6rem black)
+			}
+		}
+
+
+		&__yes {
+			background-image: var(--btn-yes);
+		}
+
+		&__no {
+			background-image: var(--btn-no);
+		}
+
+		&__ok {
+			background-image: var(--btn-ok);
+		}
+
+		&__cancel {
+			background-image: var(--btn-cancel);
+		}
+
+	}
+
+}
