@@ -79,16 +79,29 @@ function doGet() {
 /**
  * POST : Ajoute un score avec timestamp formaté et retourne les classements
  */
+/**
+ * POST : Ajoute un score avec vérification du hash
+ */
 function doPost(e) {
   try {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
     const sheet = ss.getSheetByName(SHEET_NAME);
     const body = JSON.parse(e.postData.contents);
     
-    // Génération du timestamp formaté YYYY-mm-dd HH:ii:ss
+    // --- VÉRIFICATION DU HASH ---
+    // On reconstruit la chaîne originale telle que définie : fingerprint:username:level:score
+    const stringToHash = `${body.fingerprint}:${body.username}:${body.level}:${body.score}`;
+    const serverHash = computeMD5(stringToHash);
+    
+    if (serverHash !== body.hash) {
+      throw new Error("Validation du hash échouée. Les données ont été altérées.");
+    }
+    // ----------------------------
+
+    // Génération du timestamp formaté
     const formattedDate = formatTimestamp(new Date());
     
-    // Ajout de la ligne
+    // Ajout de la ligne si le hash est valide
     sheet.appendRow([
       formattedDate,
       body.fingerprint,
@@ -113,4 +126,21 @@ function doPost(e) {
     }))
     .setMimeType(ContentService.MimeType.JSON);
   }
+}
+
+
+/**
+ * Calcule le hash MD5 d'une chaîne de caractères
+ */
+function computeMD5(text) {
+  const digest = Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, text);
+  let hash = "";
+  for (let i = 0; i < digest.length; i++) {
+    let byte = digest[i];
+    if (byte < 0) byte += 256;
+    let bStr = byte.toString(16);
+    if (bStr.length == 1) bStr = '0' + bStr;
+    hash += bStr;
+  }
+  return hash;
 }
