@@ -3,7 +3,15 @@
 Tous les changements notables du projet Sceptiques du Québec seront documentés dans ce fichier.
 
 
-## [2026-04-30 16:41]
+
+## [2026-04-30 18:12:00]
+
+### Ajouts
+
+- Ajout du fb:app_id dans le header
+
+
+## [2026-04-30 16:41:00]
 
 ### Ajouts
 
