@@ -35,12 +35,9 @@ html {
 }
 
 
-
-
 body {
     position: relative;
     color: var(--color-fg);
-    // background-color: var(--color-bg);
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -109,8 +106,6 @@ main {
 
 
 section {
-
-	// background-color: red;
     position: relative;
     width: 100%;
     max-width: calc(var(--font-size-break) - 16px);
@@ -165,7 +160,6 @@ section {
 			text-transform: uppercase;
 			letter-spacing: 0;
 			font-size: 1.2em;
-			// color: var(--color-blue);
 		}
 
         li {
@@ -259,7 +253,7 @@ section {
             align-items: center;
             justify-content: center;
             font-family: var(--font-title);
-            font-weight: 900;
+            font-weight: 700;
             font-size: 1.2em;
             color: var(--color-fg);
         }
@@ -276,6 +270,15 @@ section {
                 font-weight: 700;
             }
 
+            tr:nth-child(2) td {
+                color: var(--color-lb1);
+            }
+            tr:nth-child(3) td {
+                color: var(--color-lb2);
+            }
+            tr:nth-child(4) td {
+                color: var(--color-lb3);
+            }
             td {
                 text-transform: uppercase;
                 font-family: var(--font-title);
@@ -283,8 +286,11 @@ section {
                 height: 1.5em;
             }
 
-            td:nth-child(2), td:nth-child(3) {
+            td:nth-child(1), td:nth-child(3), td:nth-child(4) {
                 text-align: right;
+            }
+            td:nth-child(1) {
+                padding-right: 0.6em;
             }
 
         }
@@ -340,7 +346,7 @@ footer {
         align-items: center;
         justify-content: center;
         font-family: var(--font-title);
-        font-weight: 900;
+        font-weight: 700;
         font-size: 1.2em;
         color: var(--color-fg);
     }

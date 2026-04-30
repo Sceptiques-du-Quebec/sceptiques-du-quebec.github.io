@@ -59,12 +59,14 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwsBRwf-wCg1PL6P8m0llr
 
 		const table = create('table');
 		const header = table.create('tr');
+		header.create('td', null, '#');
 		header.create('td', null, 'utilisateur');
 		header.create('td', null, 'niveau');
 		header.create('td', null, 'score');
 
-		data.topGrouped.forEach(entry => {
+		data.topGrouped.forEach((entry, i) => {
 			const row = table.create('tr');
+			row.create('td', null, i + 1);
 			row.create('td', null, entry[2]);
 			row.create('td', null, entry[3]);
 			row.create('td', null, entry[4].toLocaleString());
