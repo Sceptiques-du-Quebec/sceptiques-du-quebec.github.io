@@ -210,8 +210,12 @@ section {
         border-radius: 0;
         padding: 0;
 
-        & > a > h1 {
+        & > a {
+            text-decoration: none;
+        }
 
+        & > a > h1 {
+            color: transparent;
             background-image: var(--logo);
             background-repeat: no-repeat;
             background-position: center;
