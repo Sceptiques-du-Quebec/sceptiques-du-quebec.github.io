@@ -252,8 +252,8 @@ section {
             align-items: center;
             justify-content: center;
             font-family: var(--font-title);
-            font-weight: 700;
-            font-size: 1.2em;
+            font-weight: 600;
+            font-size: 0.9em;
             color: var(--color-fg);
         }
         
@@ -290,7 +290,7 @@ section {
             tr:nth-child(4) td {
                 color: var(--color-lb3);
             }
-            
+
             td {
                 text-transform: uppercase;
                 font-family: var(--font-title);
@@ -355,8 +355,8 @@ footer {
         align-items: center;
         justify-content: center;
         font-family: var(--font-title);
-        font-weight: 700;
-        font-size: 1.2em;
+        font-weight: 600;
+        font-size: 0.9em;
         color: var(--color-fg);
     }
 
