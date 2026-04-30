@@ -238,8 +238,7 @@ section {
     &.leaderboard > div > div {
         margin-top: 1em;
         user-select: none;
-        min-height: 17rem;
-
+        min-height: 19rem;
 
         &.loaded::before {
             display: none;
@@ -260,8 +259,20 @@ section {
         
         table {
             width: 100%;
+            border-spacing: 0.4em 0.2em;
 
-            tr:not(:first-child):hover {
+            tr:not(:first-child) {
+                position: relative;
+                &::after {
+                    content: "";
+                    inset: 0;
+                    position: absolute;
+                    background-color: transparent;
+                    z-index: -1;
+                }
+            }
+
+            tr:not(:first-child):hover::after {
                 background-color: var(--color-alpha);
             }
 
@@ -279,6 +290,7 @@ section {
             tr:nth-child(4) td {
                 color: var(--color-lb3);
             }
+            
             td {
                 text-transform: uppercase;
                 font-family: var(--font-title);
@@ -288,9 +300,6 @@ section {
 
             td:nth-child(1), td:nth-child(3), td:nth-child(4) {
                 text-align: right;
-            }
-            td:nth-child(1) {
-                padding-right: 0.6em;
             }
 
         }
