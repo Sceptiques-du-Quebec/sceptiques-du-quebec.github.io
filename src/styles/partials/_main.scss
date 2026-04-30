@@ -152,6 +152,7 @@ section {
 		p {
 			margin-top: 1rem;
 			letter-spacing: var(--font-spacing);
+            font-weight: 600;
 		}
 
 		h2 {
@@ -161,6 +162,10 @@ section {
 			letter-spacing: 0;
 			font-size: 1.2em;
 		}
+
+        ul {
+            list-style-type: square;
+        }
 
         li {
             margin-left: 2em;
@@ -238,7 +243,7 @@ section {
     &.leaderboard > div > div {
         margin-top: 1em;
         user-select: none;
-        min-height: 19rem;
+        min-height: 15.5rem;
 
         &.loaded::before {
             display: none;
@@ -294,12 +299,14 @@ section {
             td {
                 text-transform: uppercase;
                 font-family: var(--font-title);
+                font-size: 0.8em;
                 font-weight: 500;
                 height: 1.5em;
             }
 
             td:nth-child(1), td:nth-child(3), td:nth-child(4) {
                 text-align: right;
+                font-variant-numeric: tabular-nums;
             }
 
         }
@@ -313,6 +320,7 @@ footer {
     justify-content: center;
     align-items: center;
     font-size: 0.8rem;
+    font-weight: 600;
     height: 5rem;
     margin-bottom: 3rem;
     user-select: none;

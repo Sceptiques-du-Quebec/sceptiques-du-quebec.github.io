@@ -1,18 +1,16 @@
 @use "utils" as *;
-@use "sass:string";
-@use "sass:color";
 
 
 $color-fg:     #161616;
-$color-alpha:  #ffffff4d;
-$color-shadow: #0000006d;
 $color-modal:  #00ffff;
 $color-leader: #dc143c;
+$color-alpha:  #ffffff4d;
+$color-shadow: #0000006d;
 
-$color-fg-hex:  hexbin($color-fg);
 $color-lb1:     $color-leader;
 $color-lb2:     wash($color-leader, $color-fg, 33%);
 $color-lb3:     wash($color-leader, $color-fg, 66%);
+$color-fg-hex:  hexbin($color-fg);
 
 $font-text:     Recursive;
 $font-title:    Unbounded;
