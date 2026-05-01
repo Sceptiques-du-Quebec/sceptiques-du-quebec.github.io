@@ -8,6 +8,8 @@ Tous les changements notables du projet Sceptiques du Québec seront documentés
 ### Ajout
 
 - Support mobile extérieur du canva
+- Support touch 2 doits pour pause
+- Effet de "bump" sur le reveal d'un drapeau
 
 ### Changements
 
