@@ -3,6 +3,16 @@
 Tous les changements notables du projet Sceptiques du Québec seront documentés dans ce fichier.
 
 
+## [2026-04-30 22:32:00]
+
+### Ajouts
+
+- Ajout d'un countdown lors du reset de la boule
+
+### Changements
+
+- FIX: Continuité du combo
+
 
 ## [2026-04-30 18:12:00]
 
