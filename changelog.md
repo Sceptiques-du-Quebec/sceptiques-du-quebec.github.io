@@ -6,7 +6,12 @@ Tous les changements notables du projet Sceptiques du Québec seront documentés
 ## [2026-05-01 05:32:00]
 
 ### Ajout
+
 - Support mobile extérieur du canva
+
+### Changements
+
+- Désactivation du viewport scale
 
 
 ## [2026-05-01 05:32:00]
