@@ -3,6 +3,13 @@
 Tous les changements notables du projet Sceptiques du Québec seront documentés dans ce fichier.
 
 
+## [2026-05-01 18:45:00]
+
+### Ajout
+
+- Ajout de deux nouvelles ressources pour les jeunes
+
+
 ## [2026-05-01 05:32:00]
 
 ### Ajout
