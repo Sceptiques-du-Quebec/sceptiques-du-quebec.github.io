@@ -3,15 +3,26 @@
 Tous les changements notables du projet Sceptiques du Québec seront documentés dans ce fichier.
 
 
-## [2026-04-30 22:32:00]
+## [2026-05-01 05:32:00]
 
 ### Ajouts
 
 - Ajout d'un countdown lors du reset de la boule
+- Augmentation du timeout de combo
+- Espace/Entrée pour mettre en pause
 
 ### Changements
 
-- FIX: Continuité du combo
+- Simplification du modal d'entrée de nom d'utilisateur
+- Refactorisation de la configuration du jeu
+- Augmentation de la vélocité de la souris
+- Traînée de la boule plus fluide
+
+### Resolutions
+
+- Reset combo quand boule touche paddle
+- Continuité du combo
+- Glitch ball visible une fraction de seconde
 
 
 ## [2026-04-30 18:12:00]

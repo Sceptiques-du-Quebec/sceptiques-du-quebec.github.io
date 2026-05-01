@@ -15,26 +15,17 @@ export default class ModalScore extends Modal {
 	}
 
 
-	show(clb) {
+	show(username, clb) {
 		this.#clb = clb;
 		this.#container = create('div', 'modalscore__container');
-		this.#container.create('div', 'modalscore__container__title', 'Voulez-vous enregistrer vos scores?');
-		const buttons = this.#container.create('div', 'modalscore__container__buttons');
-		const btnyes = buttons.create('div', 'modalscore__container__buttons__yes');
-		const btnno = buttons.create('div', 'modalscore__container__buttons__no');
-		btnyes.addEventListener('click', () => this.yes());
-		btnno.addEventListener('click', () => this.no());
-		super.show(this.#container);
-	}
 
-
-	yes() {
-		const title = create('div', 'modalscore__container__title', "Entrez votre nom d'utilisateur.");
+		const title = create('div', 'modalscore__container__title', "Entrez votre nom d'utilisateur:");
 		const form = create('div', 'modalscore__container__form');
 		const input = form.create('input', null, null, {
 			type: "text",
 			minlength: 4,
 			maxlength: 16,
+			value: username,
 			placeholder: "4 caractères min.",
 		});
 
@@ -46,6 +37,14 @@ export default class ModalScore extends Modal {
 			input.value = val;
 		});
 
+		input.addEventListener('keydown', (evt) => {
+			if (evt.key === 'Enter') {
+				evt.preventDefault();
+				evt.stopPropagation();
+				this.ok(input);
+			}
+		});
+
 		const buttons = this.#container.create('div', 'modalscore__container__buttons');
 		const btnok = buttons.create('div', 'modalscore__container__buttons__ok');
 		const btncancel = buttons.create('div', 'modalscore__container__buttons__cancel');
@@ -53,13 +52,9 @@ export default class ModalScore extends Modal {
 		btncancel.addEventListener('click', () => this.cancel());
 
 		this.#container.replaceChildren(title, form, buttons);
-		input.focus();
-	}
-
-
-	no() {
-		this.hide();
-		this.#clb({ savescore: false });
+		
+		super.show(this.#container);
+		setTimeout(() => input.select(), 200);
 	}
 
 

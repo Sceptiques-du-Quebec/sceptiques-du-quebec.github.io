@@ -33,16 +33,14 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 
 	loadGame: async function() {
 		await loadScript(GAME_URL);
-		document.querySelector('#game-container').classList.add('loaded');
-		BrickBreaqueer({
+		await BrickBreaqueer({
 			parent: "game-container",
-			width: 800,
-			height: 600,
 			fontFamily: "Unbounded",
 			fontWeight: 500,
 			color: (new CSSDoc)('--color-fg'),
 			onGameOver: async stats => await this.logScore(stats)
 		});
+		document.querySelector('#game-container').classList.add('loaded');
 	},
 
 
@@ -79,21 +77,11 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 
 	getCredentials: async function() {
 		return new Promise(res => {
-			const savescore = sessionStorage.getItem('savescore');
-			const username  = sessionStorage.getItem('username');
-			if(savescore == 'no') res({ savescore: false });
-			else if(savescore == 'yes' && username) res({ savescore: true, username: username });
-			else {
-				this.modalscore.show(results => {
-					if(results.savescore) {
-						sessionStorage.setItem('savescore', 'yes');
-						sessionStorage.setItem('username', results.username);
-					} else {
-						sessionStorage.setItem('savescore', 'no');
-					}
-					res(results);
-				});
-			}
+			const username  = localStorage.getItem('username');
+			this.modalscore.show(username || '', results => {
+				if(results.savescore) localStorage.setItem('username', results.username);
+				res(results);
+			});
 		});
 	},
 
