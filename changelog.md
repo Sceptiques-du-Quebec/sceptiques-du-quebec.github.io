@@ -5,6 +5,12 @@ Tous les changements notables du projet Sceptiques du Québec seront documentés
 
 ## [2026-05-01 05:32:00]
 
+### Ajout
+- Support mobile extérieur du canva
+
+
+## [2026-05-01 05:32:00]
+
 ### Ajouts
 
 - Ajout d'un countdown lors du reset de la boule
@@ -18,7 +24,7 @@ Tous les changements notables du projet Sceptiques du Québec seront documentés
 - Augmentation de la vélocité de la souris
 - Traînée de la boule plus fluide
 
-### Resolutions
+### Résolutions
 
 - Reset combo quand boule touche paddle
 - Continuité du combo
