@@ -8,6 +8,8 @@ Tous les changements notables du projet Sceptiques du Québec seront documentés
 ### Ajout
 
 - Ajout de deux nouvelles ressources pour les jeunes
+- Double-clique souris pour pause
+- Bonus 500pts par niveau réussi
 
 
 ## [2026-05-01 05:32:00]
