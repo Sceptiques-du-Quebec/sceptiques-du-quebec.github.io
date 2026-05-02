@@ -15,12 +15,22 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 
 
 	init: async function() {
+		await this.cleanUrl();
 		await this.shuffleBackground();
 		await documentReady();
 		this.modalscore = new ModalScore();
 		this.loadFingerprint();
 		this.loadGame();
 		this.loadLeaderboard();
+	},
+
+
+	cleanUrl: async function() {
+		if (window.location.search.includes('fbclid')) {
+			const url = new URL(window.location);
+			url.searchParams.delete('fbclid');
+			window.history.replaceState({}, document.title, url.pathname + url.search);
+		}
 	},
 
 

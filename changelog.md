@@ -11,8 +11,15 @@ Tous les changements notables du projet Sceptiques du Québec seront documentés
 ### Ajouts
 
 - Ajout de bump et de particules sur le score
+- Ajout de bonus tombants (coeur, licorne, arc-en-ciel)
+  - Coeur: +1 vie
+  - Licorne: +500pts
+  - Arc-en-ciel: Ralenti
 
-
+### Changements
+- 1000pts par niveau
+- 50pts par brique
+- Augmentation de la vitesse maximale
 
 ## [2026-05-01]
 
