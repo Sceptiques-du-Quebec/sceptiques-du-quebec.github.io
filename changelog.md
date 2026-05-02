@@ -20,6 +20,8 @@ Tous les changements notables du projet Sceptiques du Québec seront documentés
 - 1000pts par niveau
 - 50pts par brique
 - Augmentation de la vitesse maximale
+- Meilleur callback onLoadComplete
+- 
 
 ## [2026-05-01]
 

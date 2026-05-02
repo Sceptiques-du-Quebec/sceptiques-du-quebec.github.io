@@ -48,9 +48,10 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 			fontFamily: "Unbounded",
 			fontWeight: 500,
 			color: (new CSSDoc)('--color-fg'),
+			onLoadComplete: async () => document.querySelector('#game-container').classList.add('loaded'),
 			onGameOver: async stats => await this.logScore(stats)
 		});
-		document.querySelector('#game-container').classList.add('loaded');
+		
 	},
 
 
