@@ -21,7 +21,10 @@ Tous les changements notables du projet Sceptiques du Québec seront documentés
 - 50pts par brique
 - Augmentation de la vitesse maximale
 - Meilleur callback onLoadComplete
-- 
+
+### Corrections
+- Utilisation des bonnes textures
+
 
 ## [2026-05-01]
 
@@ -45,7 +48,7 @@ Tous les changements notables du projet Sceptiques du Québec seront documentés
 - Augmentation de la vélocité de la souris
 - Traînée de la boule plus fluide
 
-### Résolutions
+### Corrections
 
 - Reset combo quand boule touche paddle
 - Continuité du combo

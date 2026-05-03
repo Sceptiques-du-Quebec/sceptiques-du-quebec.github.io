@@ -7,7 +7,8 @@
     ██████╔╝╚██████╔╝╚██████╔╝   ██║   ███████╗╚██████╔╝██╔╝ ██╗
     ╚═════╝  ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝ ╚═════╝ ╚═╝  ╚═╝
 
-    Généré: Samedi le 2 mai 2026 à 17 h 18
+    Généré: Samedi le 2 mai 2026 à 22 h 19
+    Auteur: Maxime Larrivée-Roy <mlarriveeroy@gmail.com>
     Github: https://github.com/sceptiques-du-quebec
 
 */
