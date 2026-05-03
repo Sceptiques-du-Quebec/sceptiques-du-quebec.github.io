@@ -98,6 +98,7 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 
 
 	logScore: async function(stats) {
+		await new Promise(resolve => setTimeout(resolve, 1000));
 		const creds = await this.getCredentials();
 		if(creds.savescore) {
 			this.saveScore({

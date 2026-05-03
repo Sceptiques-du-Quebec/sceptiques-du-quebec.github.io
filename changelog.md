@@ -4,12 +4,18 @@ Tous les changements notables du projet Sceptiques du Québec seront documentés
 
 
 
+## [2026-05-03]
 
+### Ajouts
+- Effet de bump sur le score et les vies
+
+### Changements
+- Configuration YAML
+- 
 
 ## [2026-05-02]
 
 ### Ajouts
-
 - Ajout de bump et de particules sur le score
 - Ajout de bonus tombants (coeur, licorne, arc-en-ciel)
   - Coeur: +1 vie
