@@ -7,7 +7,20 @@ Tous les changements notables du projet Sceptiques du Québec seront documentés
 ## [2026-05-03]
 
 ### Ajouts
+- Chansons midi random
+
+
+### Changements
+- Boutons audios plus gros
+- Slowmotion passe de 0.5 à 0.7
+- GameOver recommence la partie au lieu du homescreen
+- MaxSpeed passe de 1000 à 1200
+
+## [2026-05-03]
+
+### Ajouts
 - Effet de bump sur le score et les vies
+- Effets sonores et musique
 
 ### Changements
 - Configuration YAML
