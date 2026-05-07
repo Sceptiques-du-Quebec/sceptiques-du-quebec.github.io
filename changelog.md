@@ -16,6 +16,7 @@ Tous les changements notables du projet Sceptiques du Québec seront documentés
 - GameOver recommence la partie au lieu du homescreen
 - MaxSpeed passe de 1000 à 1200
 
+
 ## [2026-05-03]
 
 ### Ajouts
