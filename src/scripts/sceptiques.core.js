@@ -42,16 +42,16 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 
 
 	loadGame: async function() {
-		await loadScript(GAME_URL);
+		const cssdoc = new CSSDoc;
+		await loadScript(`${GAME_URL}?${Math.floor(Date.now() / 1000)}`);
 		await BrickBreaqueer({
 			parent: "game-container",
-			fontFamily: "Unbounded",
+			fontFamily: cssdoc('--font-title'),
 			fontWeight: 500,
-			color: (new CSSDoc)('--color-fg'),
+			color: cssdoc('--color-fg'),
 			onLoadComplete: async () => document.querySelector('#game-container').classList.add('loaded'),
 			onGameOver: async stats => await this.logScore(stats)
 		});
-		
 	},
 
 
