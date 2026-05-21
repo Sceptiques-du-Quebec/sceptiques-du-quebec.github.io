@@ -1,6 +1,7 @@
 import './libraries/helpers';
 import CSSDoc from './libraries/cssdoc';
 import ModalScore from './libraries/modalscore';
+import ModalChangelog from './libraries/modalchangelog';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 
@@ -11,6 +12,7 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 ({
 
 	modalscore: null,
+	changelog:  null,
 	fingerprint: null,
 
 
@@ -19,9 +21,11 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 		await this.shuffleBackground();
 		await documentReady();
 		this.modalscore = new ModalScore();
+		this.changelog  = new ModalChangelog();
 		this.loadFingerprint();
 		this.loadGame();
 		this.loadLeaderboard();
+		this.initChangelog();
 	},
 
 
@@ -138,6 +142,16 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 			console.error(e);
 			return false;
 		}
+	},
+
+
+	initChangelog: function() {
+		const link = document.querySelector('#show-changelog');
+		if (!link) return;
+		link.addEventListener('click', async evt => {
+			evt.preventDefault();
+			await working(this.changelog.showChangelog());
+		});
 	}
 
 

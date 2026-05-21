@@ -48,3 +48,38 @@
 		transition-timing-function: ease-in;
 	}
 }
+
+.modal.changelog {
+	position: fixed;
+	inset: 0;
+
+	&::before {
+		background-color: #000;
+		opacity: 0.65;
+	}
+
+	.modal__placeholder {
+		flex: 0 1 auto;
+		align-items: flex-start;
+		justify-content: flex-start;
+		text-align: left;
+		position: relative;
+		width: min(92vw, 720px);
+		overflow: hidden;
+		padding: 0;
+		color: var(--color-fg);
+		border: 2px solid rgba(255, 255, 255, 0.35);
+		border-radius: 1.25rem;
+		background-color: rgb(185, 225, 225);
+		box-shadow:
+			0 0 0 0.12rem rgba(255, 255, 255, 0.35),
+			0 0 0.35rem 0.12rem red,
+			0 0 0.7rem 0.2rem orange,
+			0 0 1rem 0.28rem yellow,
+			0 0 1.35rem 0.36rem lime,
+			0 0 1.7rem 0.44rem cyan,
+			0 0 2.05rem 0.52rem blue,
+			0 0 2.4rem 0.6rem violet,
+			0 1.25rem 3rem rgba(0, 0, 0, 0.45);
+	}
+}
