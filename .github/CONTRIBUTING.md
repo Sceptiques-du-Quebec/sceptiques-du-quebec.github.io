@@ -28,12 +28,17 @@ npm run export  # générer le répertoire dist/
 npm run watch   # surveiller les fichiers pendant le développement
 ```
 
-## Ce qui est bienvenu
+## Exemples de contributions possibles
 
-- Corrections de fautes de frappe ou d'erreurs dans le contenu
-- Améliorations d'accessibilité
-- Corrections de bugs
-- Améliorations de performance
+Les contributions utiles peuvent inclure :
+
+- corrections de fautes de frappe ou d'erreurs dans le contenu ;
+- améliorations d'accessibilité ;
+- corrections de bugs ;
+- améliorations de performance ;
+- clarification de la documentation.
+
+Les mainteneurs restent responsables de prioriser, accepter ou refuser les contributions proposées.
 
 ## Questions
 
