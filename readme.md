@@ -84,4 +84,4 @@ Tu peux :
 
 Ce projet est sous licence MIT.
 Voir le fichier LICENSE pour plus de détails :
-[LISCENCE](https://github.com/Sceptiques-du-Quebec/sceptiques-du-quebec.github.io/blob/main/LICENSE)
+[LICENCE](https://github.com/Sceptiques-du-Quebec/sceptiques-du-quebec.github.io/blob/main/LICENSE)
