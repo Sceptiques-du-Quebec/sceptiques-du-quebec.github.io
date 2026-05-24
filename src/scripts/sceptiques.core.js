@@ -7,13 +7,16 @@ import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 const GAME_URL = 'https://sceptiquesduquebec.com/brick-breaqueer/scripts/brickbreaqueer.core.min.js';
 const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczmHKWykcDuGX8pqjtM_2uf6n1ykDKI2Os3QrB-A2kgnTNqz/exec';
+const LEADERBOARD_REFRESH_INTERVAL = 60 * 1000;
 
 
 ({
 
-	modalscore: null,
-	changelog:  null,
-	fingerprint: null,
+	modalscore:              null,
+	changelog:               null,
+	fingerprint:             null,
+	leaderboardRefreshTimer: null,
+	leaderboardLoading:      false,
 
 
 	init: async function() {
@@ -24,7 +27,8 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 		this.changelog  = new ModalChangelog();
 		this.loadFingerprint();
 		this.loadGame();
-		this.loadLeaderboard();
+		this.refreshLeaderboard();
+		this.startLeaderboardRefresh();
 		this.initChangelog();
 	},
 
@@ -142,6 +146,35 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 			console.error(e);
 			return false;
 		}
+	},
+
+
+	refreshLeaderboard: async function() {
+		// Évite de lancer deux requêtes leaderboard en parallèle.
+		if (this.leaderboardLoading) return false;
+		this.leaderboardLoading = true;
+		try {
+			await this.loadLeaderboard();
+			return true;
+		} catch (e) {
+			console.error(e);
+			return false;
+		} finally {
+			this.leaderboardLoading = false;
+		}
+	},
+
+
+	startLeaderboardRefresh: function() {
+		if (this.leaderboardRefreshTimer) return;
+		this.leaderboardRefreshTimer = setInterval(() => {
+			// Évite les refreshs inutiles quand l'onglet est en arrière-plan.
+			if (document.hidden) return;
+			this.refreshLeaderboard();
+		}, LEADERBOARD_REFRESH_INTERVAL);
+		document.addEventListener('visibilitychange', () => {
+			if (!document.hidden) this.refreshLeaderboard();
+		});
 	},
 
 

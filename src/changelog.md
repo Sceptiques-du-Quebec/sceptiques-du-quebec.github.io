@@ -3,6 +3,13 @@
 Tous les changements notables du projet Sceptiques du Québec seront documentés dans ce fichier.
 
 
+## [2026-05-24]
+
+### Ajouts
+
+- Rafraîchissement automatique du leaderboard aux 60 secondes.
+
+
 ## [2026-05-23]
 
 ### Ajouts
