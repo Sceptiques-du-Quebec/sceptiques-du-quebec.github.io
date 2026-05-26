@@ -7,13 +7,16 @@ import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 const GAME_URL = 'https://sceptiquesduquebec.com/brick-breaqueer/scripts/brickbreaqueer.core.min.js';
 const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczmHKWykcDuGX8pqjtM_2uf6n1ykDKI2Os3QrB-A2kgnTNqz/exec';
+const LEADERBOARD_REFRESH_INTERVAL = 60 * 1000;
 
 
 ({
 
-	modalscore: null,
-	changelog:  null,
-	fingerprint: null,
+	modalscore:              null,
+	changelog:               null,
+	fingerprint:             null,
+	leaderboardRefreshTimer: null,
+	leaderboardLoading:      false,
 
 
 	init: async function() {
@@ -24,7 +27,8 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 		this.changelog  = new ModalChangelog();
 		this.loadFingerprint();
 		this.loadGame();
-		this.loadLeaderboard();
+		this.refreshLeaderboard();
+		this.startLeaderboardRefresh();
 		this.initChangelog();
 	},
 
@@ -145,7 +149,36 @@ const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczm
 	},
 
 
-	initChangelog: function() {
+	refreshLeaderboard: async function() {
+		// Evite de lancer deux requetes leaderboard en parallele.
+		if (this.leaderboardLoading) return false;
+		this.leaderboardLoading = true;
+		try {
+			await this.loadLeaderboard();
+			return true;
+		} catch (e) {
+			console.error(e);
+			return false;
+		} finally {
+			this.leaderboardLoading = false;
+		}
+	},
+
+
+	startLeaderboardRefresh: async function() {
+		if (this.leaderboardRefreshTimer) return;
+		this.leaderboardRefreshTimer = setInterval(() => {
+			// Evite les refreshs inutiles quand l'onglet est en arriere-plan.
+			if (document.hidden) return;
+			this.refreshLeaderboard();
+		}, LEADERBOARD_REFRESH_INTERVAL);
+		document.addEventListener('visibilitychange', () => {
+			if (!document.hidden) this.refreshLeaderboard();
+		});
+	},
+
+
+	initChangelog: async function() {
 		const link = document.querySelector('#show-changelog');
 		if (!link) return;
 		link.addEventListener('click', async evt => {
