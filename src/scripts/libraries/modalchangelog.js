@@ -1,32 +1,35 @@
-import Modal from './modal';
+﻿import Modal from './modal';
 import { marked } from 'marked';
 
+const CHANGELOG_URL = 'https://raw.githubusercontent.com/Sceptiques-du-Quebec/sceptiques-du-quebec.github.io/refs/heads/main/changelog.md';
+
 export default class ModalChangelog extends Modal {
-    constructor(opts = {}) {
-        super({ ...opts, class: 'changelog' });
-    }
+	constructor(opts = {}) {
+		super({ ...opts, class: 'changelog' });
+	}
 
-    async showChangelog() {
-        try {
-            const res = await fetch('/changelog.md');
-            if (!res.ok) throw new Error(res.status);
-            const md = await res.text();
+	async showChangelog() {
+		try {
+			const res = await fetch(CHANGELOG_URL);
+			if (!res.ok) throw new Error(res.status);
 
-            const header = create('div', 'changelog__header');
-            header.create('span', 'changelog__header__title', 'Changelog');
-            header.create('button', 'changelog__header__close', '✕', { 'aria-label': 'Fermer' })
-                .addEventListener('click', () => this.hide());
+			const md = await res.text();
 
-            const body = create('div', 'changelog__body');
-            body.innerHTML = marked.parse(md);
+			const header = create('div', 'changelog__header');
+			header.create('span', 'changelog__header__title', 'Changelog');
+			header.create('button', 'changelog__header__close', 'x', { 'aria-label': 'Fermer' })
+				.addEventListener('click', () => this.hide());
 
-            const container = create('div', 'changelog__container');
-            container.append(header, body);
+			const body = create('div', 'changelog__body');
+			body.innerHTML = marked.parse(md);
 
-            await this.show(container);
-        } catch (e) {
-            console.error(e);
-            await this.show('<p>Impossible de charger le changelog.</p>');
-        }
-    }
+			const container = create('div', 'changelog__container');
+			container.append(header, body);
+
+			await this.show(container);
+		} catch (e) {
+			console.error(e);
+			await this.show('<p>Impossible de charger le changelog.</p>');
+		}
+	}
 }
