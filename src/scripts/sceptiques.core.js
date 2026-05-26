@@ -150,7 +150,7 @@ const LEADERBOARD_REFRESH_INTERVAL = 60 * 1000;
 
 
 	refreshLeaderboard: async function() {
-		// Évite de lancer deux requêtes leaderboard en parallèle.
+		// Evite de lancer deux requetes leaderboard en parallele.
 		if (this.leaderboardLoading) return false;
 		this.leaderboardLoading = true;
 		try {
@@ -165,10 +165,10 @@ const LEADERBOARD_REFRESH_INTERVAL = 60 * 1000;
 	},
 
 
-	startLeaderboardRefresh: function() {
+	startLeaderboardRefresh: async function() {
 		if (this.leaderboardRefreshTimer) return;
 		this.leaderboardRefreshTimer = setInterval(() => {
-			// Évite les refreshs inutiles quand l'onglet est en arrière-plan.
+			// Evite les refreshs inutiles quand l'onglet est en arriere-plan.
 			if (document.hidden) return;
 			this.refreshLeaderboard();
 		}, LEADERBOARD_REFRESH_INTERVAL);
@@ -178,7 +178,7 @@ const LEADERBOARD_REFRESH_INTERVAL = 60 * 1000;
 	},
 
 
-	initChangelog: function() {
+	initChangelog: async function() {
 		const link = document.querySelector('#show-changelog');
 		if (!link) return;
 		link.addEventListener('click', async evt => {
