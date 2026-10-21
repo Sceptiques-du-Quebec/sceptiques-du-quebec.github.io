@@ -5,7 +5,7 @@ import ModalChangelog from './libraries/modalchangelog';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 
-const GAME_URL = 'https://sceptiquesduquebec.com/brick-breaqueer/scripts/brickbreaqueer.core.min.js';
+const GAME_URL = 'https://sceptiquesduquebec.ca/brick-breaqueer/scripts/brickbreaqueer.core.min.js';
 const API_URL  = 'https://script.google.com/macros/s/AKfycbwH5V6n3wWoteG9czsAczmHKWykcDuGX8pqjtM_2uf6n1ykDKI2Os3QrB-A2kgnTNqz/exec';
 
 

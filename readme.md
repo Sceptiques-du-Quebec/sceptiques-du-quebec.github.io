@@ -1,6 +1,6 @@
 # 🌈 Sceptiques du Québec
 
-Site officiel : https://sceptiquesduquebec.com/  
+Site officiel : https://sceptiquesduquebec.ca/  
 Repo : https://github.com/Sceptiques-du-Quebec/sceptiques-du-quebec.github.io
 
 ---

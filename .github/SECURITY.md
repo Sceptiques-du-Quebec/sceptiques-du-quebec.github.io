@@ -19,7 +19,7 @@ Nous nous efforçons de répondre dans les 7 jours ouvrables. Nous vous tiendron
 
 ## Périmètre
 
-Ce dépôt couvre le site [sceptiquesduquebec.com](https://sceptiquesduquebec.com) et le jeu Brick BreakQueer intégré.
+Ce dépôt couvre le site [sceptiquesduquebec.ca](https://sceptiquesduquebec.ca) et le jeu Brick BreakQueer intégré.
 
 ## Divulgation responsable
 
