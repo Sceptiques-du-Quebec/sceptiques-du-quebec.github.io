@@ -1,7 +1,10 @@
-const path = require("node:path");
-const fs   = require("node:fs");
-const { buildCSS, buildJS } = require("chokibasic");
+import path from "node:path";
+import fs from "node:fs";
+import { fileURLToPath } from "node:url";
+import { buildCSS, buildJS } from "chokibasic";
 
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const srcin        = path.resolve(__dirname, "../src/");
 const jsin         = path.resolve(srcin, "scripts/sceptiques.core.js");
@@ -12,9 +15,7 @@ const changelogIn  = path.resolve(__dirname, "../changelog.md");
 const changelogOut = path.resolve(srcin, "changelog.md");
 
 
-(async () => {
-	await buildJS(jsin, jsout);
-	await buildCSS(cssin, cssout);
-	fs.copyFileSync(changelogIn, changelogOut);
-	console.log(`✅ Changelog copied: ${changelogOut}`);
-})();
+await buildJS(jsin, jsout);
+await buildCSS(cssin, cssout);
+fs.copyFileSync(changelogIn, changelogOut);
+console.log(`✅ Changelog copied: ${changelogOut}`);

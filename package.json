@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^5.2.0",
     "chokibasic": "^2.0.1",
