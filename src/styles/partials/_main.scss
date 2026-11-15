@@ -234,6 +234,28 @@ section {
 	}
 
 
+    &.logo:has(+ .notice) {
+        margin-bottom: 2rem;
+    }
+
+    &.notice > div {
+        padding: 0.7rem 1rem;
+        text-align: center;
+        container-type: inline-size;
+
+        p {
+            margin-top: 0;
+            font-family: var(--font-title);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            white-space: nowrap;
+            // Scales with the banner width so the text always fits on one line
+            font-size: min(0.8rem, 1.7cqw);
+        }
+    }
+
+
     &.game > div {
         padding: 0.7rem;
         overflow: hidden;
